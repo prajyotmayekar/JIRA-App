@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Project } from '../dto';
+import { Response as GetProjectResponse } from '../dto/project/GET';
+import { Request as AddProjectRequest } from '../dto/project/POST';
 
 @Injectable()
 export class ProjectService {
@@ -8,16 +9,28 @@ export class ProjectService {
    * @param
    * @returns projects
    */
-  getProjects(): Project[] {
-    return [
-      {
-        id: '1',
-        name: 'Project 1',
-      },
-      {
-        id: '2',
-        name: 'Project 2',
-      },
-    ];
+  getProjects(): GetProjectResponse {
+    return {
+      projects: [
+        {
+          id: '1',
+          name: 'Project 1',
+        },
+        {
+          id: '2',
+          name: 'Project 2',
+        },
+      ],
+    };
+  }
+
+  /**
+   * @description Add project
+   * @param
+   * @returns project
+   */
+  addProject(project: AddProjectRequest): number {
+    console.log(project);
+    return 1;
   }
 }
